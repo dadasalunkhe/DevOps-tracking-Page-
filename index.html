@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevOps Learning Hub | Shubham Salunkhe</title>
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #020617;
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #2563eb;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            top: -200px;
+            left: -200px;
+            z-index: -2;
+            animation: moveGlow 8s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #06b6d4;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.12;
+            bottom: -200px;
+            right: -200px;
+            z-index: -2;
+            animation: moveGlow2 10s infinite alternate;
+        }
+
+        @keyframes moveGlow {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(250px, 200px);
+            }
+        }
+
+        @keyframes moveGlow2 {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-200px, -150px);
+            }
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(15px);
+
+            padding: 20px 8%;
+
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            animation: headerDrop 1s ease;
+        }
+
+        @keyframes headerDrop {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #06b6d4
+            );
+
+            font-size: 22px;
+
+            box-shadow:
+                0 0 20px rgba(56, 189, 248, 0.4);
+
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+            }
+        }
+
+        .logo h1 {
+            color: #38bdf8;
+            font-size: 22px;
+        }
+
+        .logo p {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            padding: 70px 45px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(37, 99, 235, 0.85),
+                    rgba(15, 23, 42, 0.95)
+                );
+
+            border: 1px solid rgba(56, 189, 248, 0.3);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4);
+
+            animation: heroAppear 1.2s ease;
+        }
+
+        @keyframes heroAppear {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 50%;
+
+            right: -80px;
+            top: -80px;
+
+            animation: rotateCircle 10s linear infinite;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 50%;
+
+            right: 100px;
+            bottom: -80px;
+
+            animation: rotateCircle 7s linear infinite reverse;
+        }
+
+        @keyframes rotateCircle {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 14px;
+
+            border-radius: 50px;
+
+            background: rgba(0,0,0,0.25);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            color: #a5f3fc;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 12px #22c55e;
+
+            animation: statusBlink 1.5s infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .hero h2 {
+            font-size: clamp(34px, 5vw, 60px);
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h2 span {
+            color: #67e8f9;
+            text-shadow:
+                0 0 20px rgba(103,232,249,0.4);
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            color: #dbeafe;
+
+            font-size: 17px;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button {
+            position: relative;
+
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border-radius: 10px;
+
+            background: #38bdf8;
+
+            color: #082f49;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .button::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(255,255,255,0.3);
+
+            transform: skewX(-20deg);
+
+            transition: 0.5s;
+        }
+
+        .button:hover::before {
+            left: 120%;
+        }
+
+        .button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 30px rgba(56,189,248,0.4);
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section-header {
+            margin-top: 60px;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 30px;
+        }
+
+        .section-header p {
+            color: #94a3b8;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(30,41,59,0.95),
+                    rgba(15,23,42,0.95)
+                );
+
+            padding: 28px;
+
+            border: 1px solid #334155;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.4s,
+                border-color 0.4s,
+                box-shadow 0.4s;
+
+            animation: cardAppear 1s ease both;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            background: #38bdf8;
+
+            border-radius: 50%;
+
+            filter: blur(70px);
+
+            opacity: 0;
+
+            right: -30px;
+            top: -30px;
+
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 0.3;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+
+            border-color: #38bdf8;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.4),
+                0 0 20px rgba(56,189,248,0.12);
+        }
+
+        .card-icon {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+
+            display: inline-block;
+
+            transition: 0.4s;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .card h3 {
+            color: #38bdf8;
+
+            margin-bottom: 10px;
+
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-section {
+            margin-top: 60px;
+
+            background: rgba(30,41,59,0.7);
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #334155;
+        }
+
+        .progress-item {
+            margin: 20px 0;
+        }
+
+        .progress-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            color: #cbd5e1;
+        }
+
+        .progress-bar {
+            width: 100%;
+
+            height: 9px;
+
+            background: #0f172a;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #06b6d4
+                );
+
+            animation: progressLoad 2s ease;
+        }
+
+        .git {
+            width: 80%;
+        }
+
+        .linux {
+            width: 65%;
+        }
+
+        .docker {
+            width: 45%;
+        }
+
+        .cicd {
+            width: 30%;
+        }
+
+        @keyframes progressLoad {
+            from {
+                width: 0;
+            }
+        }
+
+        /* =========================
+           TERMINAL
+        ========================= */
+
+        .terminal {
+            margin-top: 60px;
+
+            background: #020617;
+
+            border: 1px solid #334155;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            background: #1e293b;
+
+            padding: 12px 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: #64748b;
+        }
+
+        .terminal-title {
+            margin-left: 10px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .terminal-body {
+            padding: 25px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 14px;
+
+            color: #a5f3fc;
+
+            line-height: 2;
+        }
+
+        .terminal-command {
+            color: #22c55e;
+        }
+
+        .cursor {
+            display: inline-block;
+
+            width: 8px;
+            height: 16px;
+
+            background: #38bdf8;
+
+            vertical-align: middle;
+
+            animation: cursorBlink 1s infinite;
+        }
+
+        @keyframes cursorBlink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 70px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #0f172a,
+                    #020617
+                );
+
+            border-top: 1px solid #334155;
+        }
+
+        .footer-name {
+            font-size: 24px;
+
+            color: #38bdf8;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-contact {
+            color: #cbd5e1;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-contact span {
+            color: #67e8f9;
+        }
+
+        .footer-line {
+            width: 100px;
+
+            height: 2px;
+
+            background: #38bdf8;
+
+            margin: 15px auto;
+
+            box-shadow:
+                0 0 15px #38bdf8;
+        }
+
+        footer p:last-child {
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           FLOATING PARTICLES
+        ========================= */
+
+        .particle {
+            position: fixed;
+
+            width: 4px;
+            height: 4px;
+
+            background: #38bdf8;
+
+            border-radius: 50%;
+
+            opacity: 0.5;
+
+            z-index: -1;
+
+            animation: floatParticle 10s linear infinite;
+        }
+
+        .p1 {
+            left: 10%;
+            bottom: -20px;
+            animation-delay: 0s;
+        }
+
+        .p2 {
+            left: 30%;
+            bottom: -20px;
+            animation-delay: 3s;
+        }
+
+        .p3 {
+            left: 60%;
+            bottom: -20px;
+            animation-delay: 5s;
+        }
+
+        .p4 {
+            left: 85%;
+            bottom: -20px;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatParticle {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.5;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .hero {
+                padding: 45px 25px;
+            }
+
+            .hero h2 {
+                font-size: 38px;
+            }
+
+            .container {
+                padding-top: 35px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating particles -->
+
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🚀
+            </div>
+
+            <div>
+                <h1>DevOps Hub</h1>
+                <p>Learn • Build • Deploy</p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    Learning Environment Active
+
+                </div>
+
+
+                <h2>
+
+                    Build Your
+
+                    <span>DevOps Journey</span>
+
+                </h2>
+
+
+                <p>
+
+                    Learn Git, Linux, Docker, CI/CD and Cloud
+                    technologies by building real-world projects
+                    and understanding how everything works together.
+
+                </p>
+
+
+                <a href="#courses" class="button">
+
+                    Explore Learning →
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LEARNING MODULES -->
+
+        <section id="courses">
+
+            <div class="section-header">
+
+                <h2>⚡ Learning Modules</h2>
+
+                <p>
+                    Build your DevOps knowledge step by step.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🔀
+                    </div>
+
+                    <h3>Git & GitHub</h3>
+
+                    <p>
+
+                        Learn repositories, commits,
+                        branches, merging, pull requests
+                        and collaboration.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🐧
+                    </div>
+
+                    <h3>Linux</h3>
+
+                    <p>
+
+                        Master Linux commands, files,
+                        permissions, processes and
+                        system administration.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🐳
+                    </div>
+
+                    <h3>Docker</h3>
+
+                    <p>
+
+                        Learn images, containers,
+                        Dockerfiles, networking,
+                        volumes and registries.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <div class="card-icon">
+                        🔄
+                    </div>
+
+                    <h3>CI/CD</h3>
+
+                    <p>
+
+                        Automate build, test and deployment
+                        pipelines using modern DevOps tools.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROGRESS -->
+
+        <section class="progress-section">
+
+            <div class="section-header">
+
+                <h2>📊 Learning Progress</h2>
+
+                <p>
+                    Current learning journey
+                </p>
+
+            </div>
+
+
+            <div class="progress-item">
+
+                <div class="progress-top">
+
+                    <span>Git & GitHub</span>
+
+                    <span>80%</span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill git"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="progress-item">
+
+                <div class="progress-top">
+
+                    <span>Linux</span>
+
+                    <span>65%</span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill linux"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="progress-item">
+
+                <div class="progress-top">
+
+                    <span>Docker</span>
+
+                    <span>45%</span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill docker"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="progress-item">
+
+                <div class="progress-top">
+
+                    <span>CI/CD</span>
+
+                    <span>30%</span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill cicd"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TERMINAL -->
+
+        <section class="terminal">
+
+            <div class="terminal-header">
+
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+
+                <span class="terminal-title">
+                    shubham@devops: ~
+                </span>
+
+            </div>
+
+
+            <div class="terminal-body">
+
+                <div>
+                    <span class="terminal-command">
+                        shubham@devops:~$
+                    </span>
+
+                    docker build -t devops-website:v1 .
+                </div>
+
+
+                <div>
+                    ✓ Reading Dockerfile...
+                </div>
+
+                <div>
+                    ✓ Building image...
+                </div>
+
+                <div>
+                    ✓ Image created successfully
+                </div>
+
+                <div>
+
+                    <span class="terminal-command">
+                        shubham@devops:~$
+                    </span>
+
+                    docker run -d -p 8080:80 devops-website:v1
+
+                    <span class="cursor"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-name">
+
+            Shubham Salunkhe
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            📞 <span>0763409897</span>
+
+        </div>
+
+
+        <div class="footer-line"></div>
+
+
+        <p>
+
+            DevOps Learning Hub
+
+            © 2026
+
+        </p>
+
+    </footer>
+
+</body>
+</html>
