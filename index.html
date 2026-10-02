@@ -1,6 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,41 +33,61 @@
             overflow-x: hidden;
         }
 
+
         /* =========================
-           ANIMATED BACKGROUND
+           ANIMATED BACKGROUND GLOW
         ========================= */
 
         body::before {
             content: "";
+
             position: fixed;
+
             width: 500px;
             height: 500px;
+
             background: #2563eb;
+
             border-radius: 50%;
+
             filter: blur(150px);
+
             opacity: 0.15;
+
             top: -200px;
             left: -200px;
-            z-index: -2;
+
+            z-index: -5;
+
             animation: moveGlow 8s infinite alternate;
         }
 
         body::after {
             content: "";
+
             position: fixed;
+
             width: 500px;
             height: 500px;
+
             background: #06b6d4;
+
             border-radius: 50%;
+
             filter: blur(150px);
+
             opacity: 0.12;
+
             bottom: -200px;
             right: -200px;
-            z-index: -2;
+
+            z-index: -5;
+
             animation: moveGlow2 10s infinite alternate;
         }
 
         @keyframes moveGlow {
+
             from {
                 transform: translate(0, 0);
             }
@@ -72,9 +95,11 @@
             to {
                 transform: translate(250px, 200px);
             }
+
         }
 
         @keyframes moveGlow2 {
+
             from {
                 transform: translate(0, 0);
             }
@@ -82,109 +107,427 @@
             to {
                 transform: translate(-200px, -150px);
             }
+
         }
+
+
+        /* =========================
+           FALLING BACKGROUND PARTICLES
+        ========================= */
+
+        .falling-particles {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 1;
+        }
+
+        .falling-particle {
+
+            position: absolute;
+
+            top: -20px;
+
+            border-radius: 50%;
+
+            background: #38bdf8;
+
+            box-shadow:
+                0 0 8px #38bdf8,
+                0 0 18px rgba(56, 189, 248, 0.8);
+
+            opacity: 0;
+
+            animation-name: fallingParticle;
+
+            animation-timing-function: linear;
+
+            animation-iteration-count: infinite;
+        }
+
+
+        /* PARTICLE SIZES */
+
+        .falling-particle.small {
+            width: 3px;
+            height: 3px;
+        }
+
+        .falling-particle.medium {
+            width: 6px;
+            height: 6px;
+        }
+
+        .falling-particle.large {
+            width: 9px;
+            height: 9px;
+        }
+
+
+        /* FALLING ANIMATION */
+
+        @keyframes fallingParticle {
+
+            0% {
+
+                transform:
+                    translateY(-50px)
+                    translateX(0)
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+
+                transform:
+                    translateY(50vh)
+                    translateX(35px)
+                    scale(1);
+
+                opacity: 0.8;
+            }
+
+            80% {
+                opacity: 0.6;
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    translateX(-40px)
+                    scale(0.2);
+
+                opacity: 0;
+            }
+
+        }
+
+
+        /* PARTICLE POSITIONS */
+
+        .fp1 {
+            left: 5%;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+        .fp2 {
+            left: 12%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .fp3 {
+            left: 20%;
+            animation-duration: 8s;
+            animation-delay: 4s;
+        }
+
+        .fp4 {
+            left: 29%;
+            animation-duration: 11s;
+            animation-delay: 1s;
+        }
+
+        .fp5 {
+            left: 38%;
+            animation-duration: 7s;
+            animation-delay: 5s;
+        }
+
+        .fp6 {
+            left: 47%;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+        .fp7 {
+            left: 56%;
+            animation-duration: 12s;
+            animation-delay: 6s;
+        }
+
+        .fp8 {
+            left: 65%;
+            animation-duration: 8s;
+            animation-delay: 3s;
+        }
+
+        .fp9 {
+            left: 74%;
+            animation-duration: 10s;
+            animation-delay: 0s;
+        }
+
+        .fp10 {
+            left: 83%;
+            animation-duration: 7s;
+            animation-delay: 4s;
+        }
+
+        .fp11 {
+            left: 91%;
+            animation-duration: 11s;
+            animation-delay: 1s;
+        }
+
+        .fp12 {
+            left: 97%;
+            animation-duration: 9s;
+            animation-delay: 5s;
+        }
+
+
+        /* =========================
+           DATA STREAMS
+        ========================= */
+
+        .data-stream {
+
+            position: fixed;
+
+            width: 1px;
+
+            height: 120px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    #38bdf8,
+                    transparent
+                );
+
+            opacity: 0.25;
+
+            animation:
+                dataStreamMove 5s linear infinite;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        .ds1 {
+            left: 15%;
+            top: -120px;
+            animation-delay: 1s;
+        }
+
+        .ds2 {
+            left: 35%;
+            top: -120px;
+            animation-delay: 3s;
+        }
+
+        .ds3 {
+            left: 60%;
+            top: -120px;
+            animation-delay: 0s;
+        }
+
+        .ds4 {
+            left: 80%;
+            top: -120px;
+            animation-delay: 2s;
+        }
+
+        @keyframes dataStreamMove {
+
+            0% {
+
+                transform: translateY(0);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.4;
+            }
+
+            80% {
+                opacity: 0.25;
+            }
+
+            100% {
+
+                transform: translateY(110vh);
+
+                opacity: 0;
+            }
+
+        }
+
 
         /* =========================
            HEADER
         ========================= */
 
         header {
+
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
-            background: rgba(15, 23, 42, 0.85);
+            background:
+                rgba(15, 23, 42, 0.85);
+
             backdrop-filter: blur(15px);
 
             padding: 20px 8%;
 
-            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            border-bottom:
+                1px solid
+                rgba(56, 189, 248, 0.2);
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
-            animation: headerDrop 1s ease;
+            animation:
+                headerDrop 1s ease;
         }
 
         @keyframes headerDrop {
+
             from {
-                transform: translateY(-100%);
+
+                transform:
+                    translateY(-100%);
+
                 opacity: 0;
             }
 
             to {
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
+
                 opacity: 1;
             }
+
         }
 
+
+        /* =========================
+           LOGO
+        ========================= */
+
         .logo {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
         }
 
         .logo-icon {
+
             width: 45px;
             height: 45px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             border-radius: 12px;
 
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #06b6d4
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #06b6d4
+                );
 
             font-size: 22px;
 
             box-shadow:
-                0 0 20px rgba(56, 189, 248, 0.4);
+                0 0 20px
+                rgba(56, 189, 248, 0.4);
 
-            animation: pulse 2s infinite;
+            animation:
+                pulse 2s infinite;
         }
 
         @keyframes pulse {
+
             0% {
-                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+
+                box-shadow:
+                    0 0 10px
+                    rgba(56, 189, 248, 0.3);
             }
 
             50% {
-                box-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
+
+                box-shadow:
+                    0 0 30px
+                    rgba(56, 189, 248, 0.7);
             }
 
             100% {
-                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+
+                box-shadow:
+                    0 0 10px
+                    rgba(56, 189, 248, 0.3);
             }
+
         }
 
         .logo h1 {
+
             color: #38bdf8;
+
             font-size: 22px;
         }
 
         .logo p {
+
             color: #94a3b8;
+
             font-size: 12px;
         }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 60px 20px;
+        }
+
 
         /* =========================
            HERO
         ========================= */
 
-        .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 60px 20px;
-        }
-
         .hero {
+
             position: relative;
+
             overflow: hidden;
 
             padding: 70px 45px;
@@ -198,27 +541,45 @@
                     rgba(15, 23, 42, 0.95)
                 );
 
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border:
+                1px solid
+                rgba(56, 189, 248, 0.3);
 
             box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.4);
+                0 20px 60px
+                rgba(0, 0, 0, 0.4);
 
-            animation: heroAppear 1.2s ease;
+            animation:
+                heroAppear 1.2s ease;
         }
 
         @keyframes heroAppear {
+
             from {
+
                 opacity: 0;
-                transform: translateY(40px);
+
+                transform:
+                    translateY(40px);
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
+
         }
 
+
+        /* =========================
+           HERO ROTATING CIRCLES
+        ========================= */
+
         .hero::before {
+
             content: "";
 
             position: absolute;
@@ -226,17 +587,22 @@
             width: 250px;
             height: 250px;
 
-            border: 1px solid rgba(255,255,255,0.1);
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
 
             border-radius: 50%;
 
             right: -80px;
             top: -80px;
 
-            animation: rotateCircle 10s linear infinite;
+            animation:
+                rotateCircle
+                10s linear infinite;
         }
 
         .hero::after {
+
             content: "";
 
             position: absolute;
@@ -244,17 +610,22 @@
             width: 150px;
             height: 150px;
 
-            border: 1px solid rgba(255,255,255,0.08);
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
 
             border-radius: 50%;
 
             right: 100px;
             bottom: -80px;
 
-            animation: rotateCircle 7s linear infinite reverse;
+            animation:
+                rotateCircle
+                7s linear infinite reverse;
         }
 
         @keyframes rotateCircle {
+
             from {
                 transform: rotate(0deg);
             }
@@ -262,25 +633,173 @@
             to {
                 transform: rotate(360deg);
             }
+
         }
 
+
+        /* =========================
+           HERO FALLING PARTICLES
+        ========================= */
+
+        .hero-particles {
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 1;
+        }
+
+        .hero-particle {
+
+            position: absolute;
+
+            top: -15px;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #67e8f9;
+
+            box-shadow:
+                0 0 8px #67e8f9,
+                0 0 20px
+                rgba(103, 232, 249, 0.8);
+
+            animation:
+                heroParticleFall
+                linear infinite;
+        }
+
+        @keyframes heroParticleFall {
+
+            0% {
+
+                transform:
+                    translateY(-20px)
+                    translateX(0)
+                    scale(0.4);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            50% {
+
+                transform:
+                    translateY(300px)
+                    translateX(25px)
+                    scale(1);
+            }
+
+            85% {
+                opacity: 0.5;
+            }
+
+            100% {
+
+                transform:
+                    translateY(650px)
+                    translateX(-25px)
+                    scale(0.2);
+
+                opacity: 0;
+            }
+
+        }
+
+        .hp1 {
+            left: 8%;
+            animation-duration: 5s;
+            animation-delay: 0s;
+        }
+
+        .hp2 {
+            left: 18%;
+            animation-duration: 7s;
+            animation-delay: 2s;
+        }
+
+        .hp3 {
+            left: 30%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .hp4 {
+            left: 42%;
+            animation-duration: 8s;
+            animation-delay: 4s;
+        }
+
+        .hp5 {
+            left: 55%;
+            animation-duration: 5s;
+            animation-delay: 3s;
+        }
+
+        .hp6 {
+            left: 67%;
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+
+        .hp7 {
+            left: 78%;
+            animation-duration: 6s;
+            animation-delay: 5s;
+        }
+
+        .hp8 {
+            left: 90%;
+            animation-duration: 8s;
+            animation-delay: 2s;
+        }
+
+
+        /* =========================
+           HERO CONTENT
+        ========================= */
+
         .hero-content {
+
             position: relative;
+
             z-index: 2;
         }
 
+
+        /* =========================
+           STATUS
+        ========================= */
+
         .status {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
 
             padding: 7px 14px;
 
             border-radius: 50px;
 
-            background: rgba(0,0,0,0.25);
+            background:
+                rgba(0,0,0,0.25);
 
-            border: 1px solid rgba(255,255,255,0.15);
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
 
             color: #a5f3fc;
 
@@ -290,6 +809,7 @@
         }
 
         .status-dot {
+
             width: 9px;
             height: 9px;
 
@@ -297,12 +817,15 @@
 
             border-radius: 50%;
 
-            box-shadow: 0 0 12px #22c55e;
+            box-shadow:
+                0 0 12px #22c55e;
 
-            animation: statusBlink 1.5s infinite;
+            animation:
+                statusBlink 1.5s infinite;
         }
 
         @keyframes statusBlink {
+
             0%, 100% {
                 opacity: 1;
             }
@@ -310,10 +833,18 @@
             50% {
                 opacity: 0.3;
             }
+
         }
 
+
+        /* =========================
+           HERO TEXT
+        ========================= */
+
         .hero h2 {
-            font-size: clamp(34px, 5vw, 60px);
+
+            font-size:
+                clamp(34px, 5vw, 60px);
 
             line-height: 1.1;
 
@@ -321,12 +852,16 @@
         }
 
         .hero h2 span {
+
             color: #67e8f9;
+
             text-shadow:
-                0 0 20px rgba(103,232,249,0.4);
+                0 0 20px
+                rgba(103,232,249,0.4);
         }
 
         .hero p {
+
             max-width: 650px;
 
             color: #dbeafe;
@@ -336,11 +871,13 @@
             margin-bottom: 30px;
         }
 
+
         /* =========================
            BUTTON
         ========================= */
 
         .button {
+
             position: relative;
 
             display: inline-block;
@@ -363,6 +900,7 @@
         }
 
         .button::before {
+
             content: "";
 
             position: absolute;
@@ -373,9 +911,11 @@
             width: 100%;
             height: 100%;
 
-            background: rgba(255,255,255,0.3);
+            background:
+                rgba(255,255,255,0.3);
 
-            transform: skewX(-20deg);
+            transform:
+                skewX(-20deg);
 
             transition: 0.5s;
         }
@@ -385,43 +925,57 @@
         }
 
         .button:hover {
-            transform: translateY(-4px);
+
+            transform:
+                translateY(-4px);
 
             box-shadow:
-                0 10px 30px rgba(56,189,248,0.4);
+                0 10px 30px
+                rgba(56,189,248,0.4);
         }
+
 
         /* =========================
            SECTION
         ========================= */
 
         .section-header {
+
             margin-top: 60px;
+
             margin-bottom: 25px;
         }
 
         .section-header h2 {
+
             font-size: 30px;
         }
 
         .section-header p {
+
             color: #94a3b8;
         }
+
 
         /* =========================
            CARDS
         ========================= */
 
         .cards {
+
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(240px, 1fr));
+                repeat(
+                    auto-fit,
+                    minmax(240px, 1fr)
+                );
 
             gap: 22px;
         }
 
         .card {
+
             position: relative;
 
             background:
@@ -433,7 +987,8 @@
 
             padding: 28px;
 
-            border: 1px solid #334155;
+            border:
+                1px solid #334155;
 
             border-radius: 18px;
 
@@ -444,7 +999,9 @@
                 border-color 0.4s,
                 box-shadow 0.4s;
 
-            animation: cardAppear 1s ease both;
+            animation:
+                cardAppear
+                1s ease both;
         }
 
         .card:nth-child(1) {
@@ -464,18 +1021,27 @@
         }
 
         @keyframes cardAppear {
+
             from {
+
                 opacity: 0;
-                transform: translateY(30px);
+
+                transform:
+                    translateY(30px);
             }
 
             to {
+
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
+
         }
 
         .card::before {
+
             content: "";
 
             position: absolute;
@@ -502,16 +1068,24 @@
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
 
-            border-color: #38bdf8;
+            transform:
+                translateY(-10px)
+                scale(1.02);
+
+            border-color:
+                #38bdf8;
 
             box-shadow:
-                0 15px 40px rgba(0,0,0,0.4),
-                0 0 20px rgba(56,189,248,0.12);
+                0 15px 40px
+                rgba(0,0,0,0.4),
+
+                0 0 20px
+                rgba(56,189,248,0.12);
         }
 
         .card-icon {
+
             font-size: 35px;
 
             margin-bottom: 15px;
@@ -522,10 +1096,14 @@
         }
 
         .card:hover .card-icon {
-            transform: scale(1.2) rotate(8deg);
+
+            transform:
+                scale(1.2)
+                rotate(8deg);
         }
 
         .card h3 {
+
             color: #38bdf8;
 
             margin-bottom: 10px;
@@ -534,25 +1112,30 @@
         }
 
         .card p {
+
             color: #cbd5e1;
 
             font-size: 14px;
         }
+
 
         /* =========================
            PROGRESS
         ========================= */
 
         .progress-section {
+
             margin-top: 60px;
 
-            background: rgba(30,41,59,0.7);
+            background:
+                rgba(30,41,59,0.7);
 
             padding: 30px;
 
             border-radius: 18px;
 
-            border: 1px solid #334155;
+            border:
+                1px solid #334155;
         }
 
         .progress-item {
@@ -560,9 +1143,11 @@
         }
 
         .progress-top {
+
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             margin-bottom: 8px;
 
@@ -570,6 +1155,7 @@
         }
 
         .progress-bar {
+
             width: 100%;
 
             height: 9px;
@@ -582,6 +1168,7 @@
         }
 
         .progress-fill {
+
             height: 100%;
 
             border-radius: 20px;
@@ -593,7 +1180,8 @@
                     #06b6d4
                 );
 
-            animation: progressLoad 2s ease;
+            animation:
+                progressLoad 2s ease;
         }
 
         .git {
@@ -613,31 +1201,38 @@
         }
 
         @keyframes progressLoad {
+
             from {
                 width: 0;
             }
+
         }
+
 
         /* =========================
            TERMINAL
         ========================= */
 
         .terminal {
+
             margin-top: 60px;
 
             background: #020617;
 
-            border: 1px solid #334155;
+            border:
+                1px solid #334155;
 
             border-radius: 15px;
 
             overflow: hidden;
 
             box-shadow:
-                0 20px 50px rgba(0,0,0,0.5);
+                0 20px 50px
+                rgba(0,0,0,0.5);
         }
 
         .terminal-header {
+
             background: #1e293b;
 
             padding: 12px 16px;
@@ -650,6 +1245,7 @@
         }
 
         .terminal-dot {
+
             width: 12px;
             height: 12px;
 
@@ -659,6 +1255,7 @@
         }
 
         .terminal-title {
+
             margin-left: 10px;
 
             color: #94a3b8;
@@ -667,9 +1264,12 @@
         }
 
         .terminal-body {
+
             padding: 25px;
 
-            font-family: Consolas, monospace;
+            font-family:
+                Consolas,
+                monospace;
 
             font-size: 14px;
 
@@ -679,10 +1279,12 @@
         }
 
         .terminal-command {
+
             color: #22c55e;
         }
 
         .cursor {
+
             display: inline-block;
 
             width: 8px;
@@ -692,20 +1294,25 @@
 
             vertical-align: middle;
 
-            animation: cursorBlink 1s infinite;
+            animation:
+                cursorBlink 1s infinite;
         }
 
         @keyframes cursorBlink {
+
             50% {
                 opacity: 0;
             }
+
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
+
             margin-top: 70px;
 
             padding: 40px 20px;
@@ -719,10 +1326,12 @@
                     #020617
                 );
 
-            border-top: 1px solid #334155;
+            border-top:
+                1px solid #334155;
         }
 
         .footer-name {
+
             font-size: 24px;
 
             color: #38bdf8;
@@ -733,16 +1342,19 @@
         }
 
         .footer-contact {
+
             color: #cbd5e1;
 
             margin-bottom: 15px;
         }
 
         .footer-contact span {
+
             color: #67e8f9;
         }
 
         .footer-line {
+
             width: 100px;
 
             height: 2px;
@@ -756,16 +1368,19 @@
         }
 
         footer p:last-child {
+
             color: #64748b;
 
             font-size: 13px;
         }
 
+
         /* =========================
-           FLOATING PARTICLES
+           ORIGINAL FLOATING PARTICLES
         ========================= */
 
         .particle {
+
             position: fixed;
 
             width: 4px;
@@ -777,38 +1392,56 @@
 
             opacity: 0.5;
 
-            z-index: -1;
+            z-index: 2;
 
-            animation: floatParticle 10s linear infinite;
+            animation:
+                floatParticle
+                10s linear infinite;
         }
 
         .p1 {
+
             left: 10%;
+
             bottom: -20px;
+
             animation-delay: 0s;
         }
 
         .p2 {
+
             left: 30%;
+
             bottom: -20px;
+
             animation-delay: 3s;
         }
 
         .p3 {
+
             left: 60%;
+
             bottom: -20px;
+
             animation-delay: 5s;
         }
 
         .p4 {
+
             left: 85%;
+
             bottom: -20px;
+
             animation-delay: 2s;
         }
 
         @keyframes floatParticle {
+
             from {
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
+
                 opacity: 0;
             }
 
@@ -821,10 +1454,15 @@
             }
 
             to {
-                transform: translateY(-100vh);
+
+                transform:
+                    translateY(-100vh);
+
                 opacity: 0;
             }
+
         }
+
 
         /* =========================
            RESPONSIVE
@@ -833,36 +1471,105 @@
         @media (max-width: 700px) {
 
             header {
-                padding: 15px 20px;
+
+                padding:
+                    15px 20px;
             }
 
             .hero {
-                padding: 45px 25px;
+
+                padding:
+                    45px 25px;
             }
 
             .hero h2 {
+
                 font-size: 38px;
             }
 
             .container {
+
                 padding-top: 35px;
             }
+
+            .falling-particle {
+
+                box-shadow:
+                    0 0 6px #38bdf8;
+            }
+
         }
 
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Floating particles -->
+
+    <!-- =====================================================
+         FALLING BACKGROUND PARTICLES
+    ====================================================== -->
+
+    <div class="falling-particles">
+
+        <span class="falling-particle small fp1"></span>
+
+        <span class="falling-particle medium fp2"></span>
+
+        <span class="falling-particle small fp3"></span>
+
+        <span class="falling-particle large fp4"></span>
+
+        <span class="falling-particle small fp5"></span>
+
+        <span class="falling-particle medium fp6"></span>
+
+        <span class="falling-particle small fp7"></span>
+
+        <span class="falling-particle large fp8"></span>
+
+        <span class="falling-particle small fp9"></span>
+
+        <span class="falling-particle medium fp10"></span>
+
+        <span class="falling-particle small fp11"></span>
+
+        <span class="falling-particle large fp12"></span>
+
+    </div>
+
+
+    <!-- =====================================================
+         DEVOPS DATA STREAMS
+    ====================================================== -->
+
+    <div class="data-stream ds1"></div>
+
+    <div class="data-stream ds2"></div>
+
+    <div class="data-stream ds3"></div>
+
+    <div class="data-stream ds4"></div>
+
+
+    <!-- =====================================================
+         ORIGINAL FLOATING PARTICLES
+    ====================================================== -->
 
     <div class="particle p1"></div>
+
     <div class="particle p2"></div>
+
     <div class="particle p3"></div>
+
     <div class="particle p4"></div>
 
 
-    <!-- HEADER -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header>
 
@@ -873,8 +1580,15 @@
             </div>
 
             <div>
-                <h1>DevOps Hub</h1>
-                <p>Learn • Build • Deploy</p>
+
+                <h1>
+                    DevOps Hub
+                </h1>
+
+                <p>
+                    Learn • Build • Deploy
+                </p>
+
             </div>
 
         </div>
@@ -882,16 +1596,45 @@
     </header>
 
 
-    <!-- MAIN -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
     <main class="container">
 
 
-        <!-- HERO -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="hero">
 
+
+            <!-- HERO FALLING PARTICLES -->
+
+            <div class="hero-particles">
+
+                <span class="hero-particle hp1"></span>
+
+                <span class="hero-particle hp2"></span>
+
+                <span class="hero-particle hp3"></span>
+
+                <span class="hero-particle hp4"></span>
+
+                <span class="hero-particle hp5"></span>
+
+                <span class="hero-particle hp6"></span>
+
+                <span class="hero-particle hp7"></span>
+
+                <span class="hero-particle hp8"></span>
+
+            </div>
+
+
             <div class="hero-content">
+
 
                 <div class="status">
 
@@ -906,7 +1649,9 @@
 
                     Build Your
 
-                    <span>DevOps Journey</span>
+                    <span>
+                        DevOps Journey
+                    </span>
 
                 </h2>
 
@@ -920,25 +1665,33 @@
                 </p>
 
 
-                <a href="#courses" class="button">
+                <a
+                    href="#courses"
+                    class="button"
+                >
 
                     Explore Learning →
 
                 </a>
+
 
             </div>
 
         </section>
 
 
-
-        <!-- LEARNING MODULES -->
+        <!-- =================================================
+             LEARNING MODULES
+        ================================================== -->
 
         <section id="courses">
 
+
             <div class="section-header">
 
-                <h2>⚡ Learning Modules</h2>
+                <h2>
+                    ⚡ Learning Modules
+                </h2>
 
                 <p>
                     Build your DevOps knowledge step by step.
@@ -950,13 +1703,17 @@
             <div class="cards">
 
 
+                <!-- GIT -->
+
                 <article class="card">
 
                     <div class="card-icon">
                         🔀
                     </div>
 
-                    <h3>Git & GitHub</h3>
+                    <h3>
+                        Git & GitHub
+                    </h3>
 
                     <p>
 
@@ -969,6 +1726,7 @@
                 </article>
 
 
+                <!-- LINUX -->
 
                 <article class="card">
 
@@ -976,7 +1734,9 @@
                         🐧
                     </div>
 
-                    <h3>Linux</h3>
+                    <h3>
+                        Linux
+                    </h3>
 
                     <p>
 
@@ -989,6 +1749,7 @@
                 </article>
 
 
+                <!-- DOCKER -->
 
                 <article class="card">
 
@@ -996,7 +1757,9 @@
                         🐳
                     </div>
 
-                    <h3>Docker</h3>
+                    <h3>
+                        Docker
+                    </h3>
 
                     <p>
 
@@ -1009,6 +1772,7 @@
                 </article>
 
 
+                <!-- CICD -->
 
                 <article class="card">
 
@@ -1016,7 +1780,9 @@
                         🔄
                     </div>
 
-                    <h3>CI/CD</h3>
+                    <h3>
+                        CI/CD
+                    </h3>
 
                     <p>
 
@@ -1027,19 +1793,24 @@
 
                 </article>
 
+
             </div>
 
         </section>
 
 
-
-        <!-- PROGRESS -->
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
 
         <section class="progress-section">
 
+
             <div class="section-header">
 
-                <h2>📊 Learning Progress</h2>
+                <h2>
+                    📊 Learning Progress
+                </h2>
 
                 <p>
                     Current learning journey
@@ -1048,15 +1819,22 @@
             </div>
 
 
+            <!-- GIT -->
+
             <div class="progress-item">
 
                 <div class="progress-top">
 
-                    <span>Git & GitHub</span>
+                    <span>
+                        Git & GitHub
+                    </span>
 
-                    <span>80%</span>
+                    <span>
+                        80%
+                    </span>
 
                 </div>
+
 
                 <div class="progress-bar">
 
@@ -1067,16 +1845,22 @@
             </div>
 
 
+            <!-- LINUX -->
 
             <div class="progress-item">
 
                 <div class="progress-top">
 
-                    <span>Linux</span>
+                    <span>
+                        Linux
+                    </span>
 
-                    <span>65%</span>
+                    <span>
+                        65%
+                    </span>
 
                 </div>
+
 
                 <div class="progress-bar">
 
@@ -1087,16 +1871,22 @@
             </div>
 
 
+            <!-- DOCKER -->
 
             <div class="progress-item">
 
                 <div class="progress-top">
 
-                    <span>Docker</span>
+                    <span>
+                        Docker
+                    </span>
 
-                    <span>45%</span>
+                    <span>
+                        45%
+                    </span>
 
                 </div>
+
 
                 <div class="progress-bar">
 
@@ -1107,16 +1897,22 @@
             </div>
 
 
+            <!-- CICD -->
 
             <div class="progress-item">
 
                 <div class="progress-top">
 
-                    <span>CI/CD</span>
+                    <span>
+                        CI/CD
+                    </span>
 
-                    <span>30%</span>
+                    <span>
+                        30%
+                    </span>
 
                 </div>
+
 
                 <div class="progress-bar">
 
@@ -1126,22 +1922,30 @@
 
             </div>
 
+
         </section>
 
 
-
-        <!-- TERMINAL -->
+        <!-- =================================================
+             TERMINAL
+        ================================================== -->
 
         <section class="terminal">
+
 
             <div class="terminal-header">
 
                 <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
+
                 <span class="terminal-dot"></span>
 
+                <span class="terminal-dot"></span>
+
+
                 <span class="terminal-title">
+
                     shubham@devops: ~
+
                 </span>
 
             </div>
@@ -1149,50 +1953,74 @@
 
             <div class="terminal-body">
 
+
                 <div>
+
                     <span class="terminal-command">
+
                         shubham@devops:~$
+
                     </span>
 
-                    docker build -t devops-website:v1 .
+                    docker build
+                    -t devops-website:v1 .
+
                 </div>
 
 
                 <div>
+
                     ✓ Reading Dockerfile...
+
                 </div>
 
+
                 <div>
+
                     ✓ Building image...
+
                 </div>
 
+
                 <div>
+
                     ✓ Image created successfully
+
                 </div>
+
 
                 <div>
 
                     <span class="terminal-command">
+
                         shubham@devops:~$
+
                     </span>
 
-                    docker run -d -p 8080:80 devops-website:v1
+                    docker run
+                    -d
+                    -p 8080:80
+                    devops-website:v1
 
                     <span class="cursor"></span>
 
                 </div>
 
+
             </div>
 
         </section>
 
+
     </main>
 
 
-
-    <!-- FOOTER -->
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer>
+
 
         <div class="footer-name">
 
@@ -1203,7 +2031,11 @@
 
         <div class="footer-contact">
 
-            📞 <span>0763409897</span>
+            📞
+
+            <span>
+                0763409897
+            </span>
 
         </div>
 
@@ -1219,7 +2051,11 @@
 
         </p>
 
+
     </footer>
 
+
 </body>
+
 </html>
+```
